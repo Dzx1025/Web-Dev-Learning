@@ -1,2 +1,2 @@
 # Web-Dev-Learning
-Repository for learning Web Devlopment.
+This repository is for self-learning Web Development according to [Microsoft Web Dev Tutorial](https://microsoft.github.io/Web-Dev-For-Beginners/#/).
