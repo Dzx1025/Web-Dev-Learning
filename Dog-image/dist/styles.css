@@ -42,11 +42,12 @@ body {
   -webkit-font-smoothing: antialiased;
   background-color: var(--c3);
   color: var(--c4);
+  min-width: 500px;
+  min-height: fit-content;
 }
 img,
 iframe {
   border: none;
-  max-width: 100%;
 }
 
 a {
@@ -162,6 +163,7 @@ textarea {
   background: var(--c2);
   border: 0;
   padding: 0.6em;
+  margin: 5px;
 }
 
 button,
@@ -217,4 +219,34 @@ article {
 section > section:first-child,
 article:first-child {
   margin-left: 0;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 10px;
+  border-bottom: 1px solid #ddd; /* Border to make it look like a header */
+}
+
+.title img {
+  width: 50px;
+  height: auto;
+  margin-right: 10px; /* Space between the image and the text */
+}
+
+.title h1 {
+  font-size: 24px;
+  margin: 0;
+}
+
+.result-container {
+  display: flex;
+  height: 100vh;
+}
+
+.dog-image {
+  margin: 20px;
+  border: thick double #e49343;
+  height: auto;
 }

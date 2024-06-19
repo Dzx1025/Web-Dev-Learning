@@ -9,28 +9,21 @@
   </head>
 
   <body class="container">
-    <div>
+    <div class="title">
+      <img alt="dog image" src="img/icon.png" />
       <h1>Dog Lover</h1>
     </div>
     <!--form area-->
-    <form class="form-data" autocomplete="on">
-      <img alt="dog image" src="img/icon.png" />
+    <form class="form-data">
       <div>
         <h2>Choose your favorite dog breed!</h2>
       </div>
-      <div>
-        <label for="breed-name">Breed</label>
-        <select name="pets" id="breed-select" required class="breed-name">
-          <option value="">--Please choose an option--</option>
-          <option value="dog">Dog</option>
-          <option value="cat">Cat</option>
-          <option value="hamster">Hamster</option>
-          <option value="parrot">Parrot</option>
-          <option value="spider">Spider</option>
-          <option value="goldfish">Goldfish</option>
+      <div id="breed-select">
+        <select name="breeds" required class="breed-name">
+          <option value="">Select a breed</option>
         </select>
       </div>
-      <button class="search-btn">Pick</button>
+      <button class="submit">Show me!</button>
     </form>
     <!--result area-->
     <div class="result">
@@ -38,7 +31,7 @@
       <div class="errors"></div>
       <div class="data"></div>
       <div class="result-container">
-        <img alt="dog image" src="" />
+        <img class="dog-image" alt="dog image" />
       </div>
     </div>
     <script src="main.js"></script>
