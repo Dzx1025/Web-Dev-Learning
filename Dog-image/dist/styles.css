@@ -18,7 +18,7 @@
   --rc: 8px;
 }
 
-@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: light) {
   :root {
     --c2: #333;
     --c3: #1e1f20;
