@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>My Dog Image</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+
+  <body class="container">
+    <div>
+      <h1>Dog Lover</h1>
+    </div>
+    <!--form area-->
+    <form class="form-data" autocomplete="on">
+      <img alt="dog image" src="img/icon.png" />
+      <div>
+        <h2>Choose your favorite dog breed!</h2>
+      </div>
+      <div>
+        <label for="breed-name">Breed</label>
+        <select name="pets" id="breed-select" required class="breed-name">
+          <option value="">--Please choose an option--</option>
+          <option value="dog">Dog</option>
+          <option value="cat">Cat</option>
+          <option value="hamster">Hamster</option>
+          <option value="parrot">Parrot</option>
+          <option value="spider">Spider</option>
+          <option value="goldfish">Goldfish</option>
+        </select>
+      </div>
+      <button class="search-btn">Pick</button>
+    </form>
+    <!--result area-->
+    <div class="result">
+      <div class="loading">loading...</div>
+      <div class="errors"></div>
+      <div class="data"></div>
+      <div class="result-container">
+        <img alt="dog image" src="" />
+      </div>
+    </div>
+    <script src="main.js"></script>
+  </body>
+</html>

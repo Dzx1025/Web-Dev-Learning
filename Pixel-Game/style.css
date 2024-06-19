@@ -1,0 +1,28 @@
+* {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  text-align: center;
+}
+
+.highlight {
+  background-color: yellow;
+}
+
+.error {
+  background-color: lightcoral;
+  border: red;
+}
+
+.board-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+}
+
+canvas {
+  border: 2px solid #000;
+}
+
+#clear-btn {
+  margin: 10pt;
+}

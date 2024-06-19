@@ -1,0 +1,29 @@
+<html>
+  <head>
+    <title>Typing game</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>Typing game!</h1>
+    <p>
+      Practice your typing skills with a quote from Sherlock Holmes. Click
+      <b>start</b> to begin!
+    </p>
+    <p id="quote"></p>
+    <!-- This will display our quote -->
+    <p id="message"></p>
+    <!-- This will display any status messages -->
+    <div>
+      <!-- The textbox for typing -->
+      <input type="text" aria-label="current word" id="typed-value" />
+      <!-- To start the game -->
+      <button type="button" id="start">Start</button>
+    </div>
+    <dialog id="dialog">
+      <button autofocus>Close</button>
+      <p>This modal dialog has a groovy backdrop!</p>
+    </dialog>
+
+    <script src="script.js"></script>
+  </body>
+</html>
