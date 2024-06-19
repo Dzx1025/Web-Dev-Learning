@@ -21,9 +21,9 @@ function draw(e) {
   const pen = ctx.createImageData(5, 5);
   for (let i = 0; i < pen.data.length; i += 4) {
     // Modify pixel data
-    pen.data[i + 0] = 0; // R value
-    pen.data[i + 1] = 0; // G value
-    pen.data[i + 2] = 0; // B value
+    pen.data[i + 0] = 198; // R value
+    pen.data[i + 1] = 120; // G value
+    pen.data[i + 2] = 56; // B value
     pen.data[i + 3] = 180; // A value
   }
   const directionMap = {
@@ -63,9 +63,9 @@ function startBlinking() {
   const ctx = board.getContext("2d");
   const pen = ctx.createImageData(5, 5);
   for (let i = 0; i < pen.data.length; i += 4) {
-    pen.data[i + 0] = 0; // R value
-    pen.data[i + 1] = 0; // G value
-    pen.data[i + 2] = 0; // B value
+    pen.data[i + 0] = 198; // R value
+    pen.data[i + 1] = 120; // G value
+    pen.data[i + 2] = 56; // B value
     pen.data[i + 3] = 180; // A value
   }
 
