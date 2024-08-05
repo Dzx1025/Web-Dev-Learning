@@ -13,3 +13,7 @@ This repository is for self-learning Web Development according to [Microsoft Web
 ## Dog Image: An Chrome/Edge extension can explore cute dog pics according to breed selected
 
 ![image](./Dog-image/image.png)
+
+## Meteor-hitting-earth: Protect earth from the falling meteors
+
+![image](./Meteor-hitting-earth/default.png)
