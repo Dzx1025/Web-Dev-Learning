@@ -151,6 +151,7 @@ function drawGameObjects(ctx) {
 function initGame() {
   gameObjects = [];
   createPlayer();
+  createMeteor();
   setInterval(() => createMeteor(), 10000);
 
   eventEmitter.on(Messages.KEY_EVENT_LEFT, () => {
