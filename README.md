@@ -14,6 +14,6 @@ This repository is for self-learning Web Development according to [Microsoft Web
 
 ![image](./Dog-image/image.png)
 
-## Meteor-hitting-earth: Protect earth from the falling meteors
+## Meteor-hitting-earth: Protect earth from the falling meteors (No earth yet lol)
 
 ![image](./Meteor-hitting-earth/default.png)
