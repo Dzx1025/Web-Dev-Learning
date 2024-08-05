@@ -1,3 +1,4 @@
 node_modules/
 test.*
 Web-Dev-Learning.code-workspace
+.DS_Store

@@ -58,12 +58,12 @@ class Meteor extends GameObject {
 
     let id = setInterval(() => {
       if (this.y < canvas.height) {
-        this.y += 15;
+        this.y += 10;
       } else {
-        console.log("Stopped at", this.y);
+        // console.log("Stopped at", this.y);
         clearInterval(id);
       }
-    }, 300);
+    }, 100);
   }
 }
 
@@ -99,7 +99,7 @@ let ctx,
   eventEmitter = new EventEmitter();
 
 let onKeyDown = function (evt) {
-  console.log(evt.keyCode);
+  // console.log(evt.keyCode);
   if (evt.key === "ArrowLeft") {
     eventEmitter.emit(Messages.KEY_EVENT_LEFT);
   } else if (evt.key === "ArrowRight") {
@@ -171,12 +171,12 @@ window.onload = async () => {
   canvas = document.getElementById("canvas");
   ctx = canvas.getContext("2d");
   playerImg = await loadTexture("assets/player.jpeg");
-  meteorImg = await loadTexture("assets/meteor.jpeg");
+  meteorImg = await loadTexture("assets/meteor.png");
 
   initGame();
   let gameLoopId = setInterval(() => {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = "black";
+    ctx.fillStyle = "#130723";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     updateGameObjects();
     drawGameObjects(ctx);
