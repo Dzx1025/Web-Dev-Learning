@@ -1,0 +1,12 @@
+{
+  "name": "meteor-hitting-earth",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "start": "npx http-server -c-1 -p 5001",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Zeke",
+  "license": "ISC",
+  "description": ""
+}
