@@ -46,6 +46,17 @@ class Player extends GameObject {
     this.type = "player";
     this.width = 180;
     this.height = 35;
+    this.life = 3;
+    this.points = 0;
+  }
+  decrementLife() {
+    this.life--;
+    if (this.life === 0) {
+      this.dead = true;
+    }
+  }
+  incrementPoints() {
+    this.points += 10;
   }
 }
 
@@ -87,7 +98,8 @@ function intersectRect(r1, r2) {
 const Messages = {
   KEY_EVENT_LEFT: "PLAYER_MOVE_LEFT",
   KEY_EVENT_RIGHT: "PLAYER_MOVE_RIGHT",
-  COLLISION: "COLLISION",
+  COLLISION_METEOR: "COLLISION",
+  HURT_PLAYER: "HURT_PLAYER",
 };
 
 let ctx,
@@ -95,7 +107,9 @@ let ctx,
   playerImg,
   meteor,
   meteorImg,
+  lifeImg,
   gameObjects = [],
+  gameLoopId,
   eventEmitter = new EventEmitter();
 
 let onKeyDown = function (evt) {
@@ -122,7 +136,7 @@ function createPlayer() {
 }
 
 function createMeteor() {
-  let START_X = Math.random() * canvas.width;
+  let START_X = 50 + Math.random() * (canvas.width - 50);
   meteor = new Meteor(START_X, 0);
   meteor.img = meteorImg;
   gameObjects.push(meteor);
@@ -135,11 +149,27 @@ function updateGameObjects() {
     if (
       intersectRect(player.rectFromGameObject(), meteor.rectFromGameObject())
     ) {
-      eventEmitter.emit(Messages.COLLISION, { deadObj: meteor });
+      eventEmitter.emit(Messages.COLLISION_METEOR, { deadObj: meteor });
+    } else if (meteor.y >= canvas.height) {
+      eventEmitter.emit(Messages.HURT_PLAYER, { deadObj: meteor });
     }
   });
 
   gameObjects = gameObjects.filter((obj) => !obj.dead);
+}
+
+function drawLife(ctx) {
+  const START_POS = canvas.width / 2 - (player.life * 50) / 2;
+  for (let i = 0; i < player.life; i++) {
+    ctx.drawImage(lifeImg, START_POS + i * 50, 700, 50, 50);
+  }
+}
+
+function drawPoints(ctx) {
+  ctx.font = "40px Arial";
+  ctx.fillStyle = "white";
+  ctx.textAlign = "left";
+  ctx.fillText("Points: " + player.points, canvas.width / 2 - 75, 200);
 }
 
 function drawGameObjects(ctx) {
@@ -152,7 +182,7 @@ function initGame() {
   gameObjects = [];
   createPlayer();
   createMeteor();
-  setInterval(() => createMeteor(), 10000);
+  setInterval(() => createMeteor(), 1000);
 
   eventEmitter.on(Messages.KEY_EVENT_LEFT, () => {
     player.x -= 10;
@@ -162,9 +192,24 @@ function initGame() {
     player.x += 10;
   });
 
-  eventEmitter.on(Messages.COLLISION, (_, { deadObj }) => {
-    deadObj.dead = true;
+  eventEmitter.on(Messages.COLLISION_METEOR, (_, { deadObj: meteor }) => {
+    meteor.dead = true;
+    player.incrementPoints();
   });
+
+  eventEmitter.on(Messages.HURT_PLAYER, (_, { deadObj: meteor }) => {
+    meteor.dead = true;
+    player.decrementLife();
+    if (player.dead) {
+      exitGame();
+    }
+  });
+}
+
+function exitGame() {
+  alert("Game Over");
+  gameObjects = [];
+  clearInterval(gameLoopId);
 }
 
 window.onload = async () => {
@@ -172,12 +217,15 @@ window.onload = async () => {
   ctx = canvas.getContext("2d");
   playerImg = await loadTexture("assets/player.jpeg");
   meteorImg = await loadTexture("assets/meteor.png");
+  lifeImg = await loadTexture("assets/life.png");
 
   initGame();
-  let gameLoopId = setInterval(() => {
+  gameLoopId = setInterval(() => {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.fillStyle = "#130723";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
+    drawLife(ctx);
+    drawPoints(ctx);
     updateGameObjects();
     drawGameObjects(ctx);
   }, 100);
