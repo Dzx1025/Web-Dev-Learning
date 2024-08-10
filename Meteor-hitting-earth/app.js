@@ -108,6 +108,7 @@ let ctx,
   meteor,
   meteorImg,
   lifeImg,
+  hitSound,
   gameObjects = [],
   gameLoopId,
   eventEmitter = new EventEmitter();
@@ -150,6 +151,7 @@ function updateGameObjects() {
       intersectRect(player.rectFromGameObject(), meteor.rectFromGameObject())
     ) {
       eventEmitter.emit(Messages.COLLISION_METEOR, { deadObj: meteor });
+      hitSound.play();
     } else if (meteor.y >= canvas.height) {
       eventEmitter.emit(Messages.HURT_PLAYER, { deadObj: meteor });
     }
@@ -218,6 +220,8 @@ window.onload = async () => {
   playerImg = await loadTexture("assets/player.jpeg");
   meteorImg = await loadTexture("assets/meteor.png");
   lifeImg = await loadTexture("assets/life.png");
+  hitSound = document.getElementById("hitSound");
+  hitSound.volume = 0.1;
 
   initGame();
   gameLoopId = setInterval(() => {
